@@ -10,6 +10,7 @@ import javax.xml.parsers.*;
 
 public class Run {
     public static void main(String[] args) throws Exception{
+        createXml();
         ANTLRInputStream input = new ANTLRInputStream(System.in);
 // create a lexer that feeds off of input CharStream
         LanguageLexer lexer = new LanguageLexer(input);
@@ -22,5 +23,29 @@ public class Run {
         ParseTreeWalker walker = new ParseTreeWalker();
         walker.walk(new Check(), tree);
         System.out.println();
+    }
+
+
+    public static void createXml() {
+        try {
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            File file = new File("server.xml");
+            Document document = documentBuilder.newDocument();
+            Element newServer = document.createElement("servers");
+            document.appendChild(newServer);
+
+            TransformerFactory transformerFactory =
+                    TransformerFactory.newInstance();
+            Transformer transformer =
+                    transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(document);
+            StreamResult result =
+                    new StreamResult(file);
+            transformer.transform(source, result);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
