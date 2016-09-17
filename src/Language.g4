@@ -1,8 +1,10 @@
 grammar Language;
 init : com;
 com : method pipe com | method;
-method : METHOD;
+method : METHOD(parameter);
 METHOD : [a-z]+;
 pipe : SINPIP;
+parameter : PARAMETER;
+PARAMETER : [ -][a-z]+;
 SINPIP : [|];
 WS : [ \t\r\n]+ -> skip ;
