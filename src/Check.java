@@ -58,8 +58,9 @@ public class Check extends LanguageBaseListener{
         Element ip = document.createElement("ip");
         name.appendChild(document.createTextNode(methodDetails[0]));
         ip.appendChild(document.createTextNode(methodDetails[1]));
-        newServer.appendChild(name);
-        newServer.appendChild(ip);
+        root.appendChild(newMethod);
+        newMethod.appendChild(name);
+        newMethod.appendChild(ip);
 
         DOMSource source = new DOMSource(document);
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
