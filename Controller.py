@@ -1,8 +1,7 @@
 import json
 import socket
-import threading
+import sqlite3 as lite
 
-dictionary ={}
 def creatfile(ip, port):
     with open("text.json", "w") as outfile:
         json.dump({'ip': ip, 'port': port}, outfile, indent=4)
@@ -37,5 +36,36 @@ def fileSender(id) :
     l = f.read(1024)
     s.send(l)
 
+
+def addingMethods (id, ip, port, name) :
+    print "1"
+    con = lite.connect('main.db')
+    cur = con.cursor()
+    print "2"
+    if (isnotexist(cur, id)) :
+        print "3"
+        cur.execute('INSERT INTO methoddetails VALUES(?,?)', (id, name,))
+        cur.execute('INSERT INTO ips(method_id, ip, port) VALUES(?,?,?)', (id, ip, port,))
+        con.commit()
+
+
+
+
+
+
+
+
+def isnotexist(cur, id):
+    print "1.2"
+    cur.execute(
+        'SELECT id FROM methoddetails  where id = ?', (id,))
+    data = cur.fetchall()
+    print "1.3"
+    if len(data)==0:
+        print "1.4"
+        return True
+    else:
+        print "1.5"
+        return False
 
 

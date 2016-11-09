@@ -3,9 +3,20 @@ import threading
 
 
 # Server for each client
+from Controller import addingMethods
+
+
 def clientCommunicator(conn):
     #first take the id
     id = int(conn.recv(4))
+    print id
+    ip = conn.recv(15)
+    print ip
+    port = int(conn.recv(4))
+    print port
+    name = conn.recv(10)
+    print name
+    addingMethods(id, ip, port, name)
     #print id
     # Binding to a port according to clients id
     # Keep lisning until the json file is transfered
@@ -25,7 +36,7 @@ def server():
     global dic
     server = socket.socket()
     server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    server.bind(('', 3443))
+    server.bind(('', 3452))
     server.listen(1)
     ## This will creat separate thread for each client application
     while True:

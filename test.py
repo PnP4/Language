@@ -1,0 +1,2 @@
+ad =True
+print(~ad)

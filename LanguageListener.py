@@ -31,9 +31,6 @@ class LanguageListener(ParseTreeListener):
         value = ctx.METHOD().getText()
         if (value == "man"):
             self.man()
-
-        elif(value == "addmethod"):
-            print "sdfs"
         else:
             con = lite.connect('main.db')
 
@@ -45,6 +42,8 @@ class LanguageListener(ParseTreeListener):
 
             if data != None:
                 Controller.appendToJson(data)
+                cur.execute('UPDATE ips status= "BUSY" where method_id = ?',(data[0],))
+                con.commit()
                 print "Method " + value
 
             else:
