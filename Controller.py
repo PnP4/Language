@@ -20,7 +20,10 @@ def run():
    with open('server.json') as data_file:
        data = json.load(data_file)
        for i in range(len(data["server"])):
-           if(i != len(data["server"])-1 ):
+           if(i == len(data["server"])-1 ):
+               fileSender(data["server"][i]["id"])
+
+           else :
                creatfile(data["server"][i+1]["ip"], data["server"][i+1]["port"])
                fileSender(data["server"][i]["id"])
 
@@ -28,7 +31,7 @@ def run():
 def fileSender(id) :
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     ## connecting to the accroding clientCommunicator
-    s.connect(("localhost", id+3000))
+    s.connect(("localhost", id+3002))
     f = open("text.json", "rb")
     ## this will send the file to the clientCommunicator
     l = f.read(1024)

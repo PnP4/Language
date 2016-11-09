@@ -12,7 +12,7 @@ def clientCommunicator(conn):
     # Then send it to the IoT device
     server = socket.socket()
     server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    server.bind(('', id+3000))
+    server.bind(('', id+3002))
     server.listen(1)
     while True:
         conn1, address1 = server.accept()
@@ -25,7 +25,7 @@ def server():
     global dic
     server = socket.socket()
     server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    server.bind(('', 3441))
+    server.bind(('', 3443))
     server.listen(1)
     ## This will creat separate thread for each client application
     while True:
