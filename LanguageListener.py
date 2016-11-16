@@ -42,8 +42,8 @@ class LanguageListener(ParseTreeListener):
 
             if data != None:
                 Controller.appendToJson(data)
-                cur.execute('UPDATE ips status= "BUSY" where method_id = ?',(data[0],))
-                con.commit()
+                #cur.execute('UPDATE ips status= "BUSY" where method_id = ?',(data[0],))
+                #con.commit()
                 print "Method " + value
 
             else:

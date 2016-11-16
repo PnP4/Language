@@ -2,9 +2,36 @@ import json
 import socket
 import sqlite3 as lite
 
-def creatfile(ip, port):
+def creatfile():
     with open("text.json", "w") as outfile:
-        json.dump({'ip': ip, 'port': port}, outfile, indent=4)
+        data={}
+        data['inpdeamon']={"ip":"127.0.0.1","port":8120,"name":'inpdeamon',"type":"server","protocol":"tcp"}
+        data["oupdeamon"]={"ip":"127.0.0.1","port":8100,"name":'oudeamon',"type":"server","protocol":"udp"}
+        data["cntrldeamon"]={"ip":"192.168.1.2","port":8080,"name":'cntrldeamon',"type":"client","protocol":"tcp"}
+        data["timestamp"] = "2016-10-07"
+        data["fromip"] = "127.0.0.1"
+        data["sysid"] = 1500
+        data["sysname"] = "control1"
+        data["programproperties"] = "-p 100 -q 1000"
+        data["deviceproperties"] = "-p 1500 -q 150"
+        #json.dump({'ip': ip, 'port': port}, outfile, indent=4)
+        json.dump(data, outfile,indent=4)
+
+
+def creatfile2(ip,port):
+    with open("text.json", "w") as outfile:
+        data={}
+        data['inpdeamon']={"ip":ip,"port":8100,"name":'inpdeamon',"type":"client","protocol":"udp"}
+        data["oupdeamon"]={"ip":"127.0.0.1","port":8100,"name":'oudeamon',"type":"server","protocol":"udp"}
+        data["cntrldeamon"]={"ip":"192.168.1.2","port":8080,"name":'cntrldeamon',"type":"client","protocol":"tcp"}
+        data["timestamp"] = "2016-10-07"
+        data["fromip"] = "127.0.0.1"
+        data["sysid"] = 1500
+        data["sysname"] = "control1"
+        data["sysname"] = "control1"
+        data["programproperties"] = "-p 100 -q 1000"
+        data["deviceproperties"] = "-p 1500 -q 150"
+        json.dump(data, outfile, indent=4)
 
 
 def appendToJson(data):
@@ -19,12 +46,15 @@ def run():
    with open('server.json') as data_file:
        data = json.load(data_file)
        for i in range(len(data["server"])):
-           if(i == len(data["server"])-1 ):
+           if (i==0):
+               creatfile()
+               print "first file created"
                fileSender(data["server"][i]["id"])
-
+               print "1st send"
            else :
-               creatfile(data["server"][i+1]["ip"], data["server"][i+1]["port"])
+               creatfile2(data["server"][i-1]["ip"],data["server"][i-1]["port"])
                fileSender(data["server"][i]["id"])
+               print "2nd send"
 
 
 def fileSender(id) :
@@ -35,6 +65,7 @@ def fileSender(id) :
     ## this will send the file to the clientCommunicator
     l = f.read(1024)
     s.send(l)
+    s.close()
 
 
 def addingMethods (id, ip, port, name) :

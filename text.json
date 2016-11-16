@@ -1,4 +1,29 @@
 {
-    "ip": "23.434", 
-    "port": 234
+    "sysname": "control1", 
+    "cntrldeamon": {
+        "ip": "192.168.1.2", 
+        "type": "client", 
+        "port": 8080, 
+        "protocol": "tcp", 
+        "name": "cntrldeamon"
+    }, 
+    "timestamp": "2016-10-07", 
+    "oupdeamon": {
+        "ip": "127.0.0.1", 
+        "type": "server", 
+        "port": 8100, 
+        "protocol": "udp", 
+        "name": "oudeamon"
+    }, 
+    "fromip": "127.0.0.1", 
+    "sysid": 1500, 
+    "inpdeamon": {
+        "ip": "192.168.1.2", 
+        "type": "client", 
+        "port": 8100, 
+        "protocol": "udp", 
+        "name": "inpdeamon"
+    }, 
+    "programproperties": "-p 100 -q 1000", 
+    "deviceproperties": "-p 1500 -q 150"
 }
