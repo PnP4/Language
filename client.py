@@ -10,5 +10,11 @@ s.send(val)
 # s.send(raw_input("Name"))
 #while True :
 print s.recv(6)
-print s.recv(1024)
-print s.recv(1024)
+
+#while True:
+    #a = s.recv(1024)
+    #if(a is None):
+     #   break
+    #else:
+       # print (a)*/
+#print s.recv(1024)

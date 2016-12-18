@@ -1,29 +1,31 @@
 {
-    "sysname": "control1", 
-    "cntrldeamon": {
-        "ip": "192.168.1.2", 
-        "type": "client", 
-        "port": 8080, 
-        "protocol": "tcp", 
-        "name": "cntrldeamon"
-    }, 
-    "timestamp": "2016-10-07", 
-    "oupdeamon": {
-        "ip": "127.0.0.1", 
-        "type": "server", 
-        "port": 8100, 
-        "protocol": "udp", 
-        "name": "oudeamon"
-    }, 
-    "fromip": "127.0.0.1", 
-    "sysid": 1500, 
-    "inpdeamon": {
-        "ip": "192.168.1.2", 
-        "type": "client", 
-        "port": 8100, 
-        "protocol": "udp", 
-        "name": "inpdeamon"
-    }, 
-    "programproperties": "-p 100 -q 1000", 
-    "deviceproperties": "-p 1500 -q 150"
+    "seq": [
+        {
+            "seqno": 1, 
+            "name": "view.py"
+        }, 
+        {
+            "seqno": 2, 
+            "name": "add.py"
+        }
+    ], 
+    "add.py": [
+        {
+            "avialable": 0, 
+            "ip": "192.168.1.3", 
+            "conport": 8100, 
+            "inport": 8090
+        }
+    ], 
+    "msgtype": "link", 
+    "view.py": [
+        {
+            "avialable": 0, 
+            "ip": "192.168.1.7", 
+            "conport": 8100, 
+            "inport": 8090
+        }
+    ], 
+    "you": "view.py", 
+    "prgid": "125899"
 }

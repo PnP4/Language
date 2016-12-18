@@ -30,12 +30,12 @@ def clientCommunicator(conn):
     print "in"
     conn1, address1 = server.accept()
     print "good"
-    file = conn1.recv(1024) ## recive the file
+    file = conn1.recv(2024) ## recive the file
     print file
     conn.send(file) ## send the file to the IoT device
     conn1.close()
     conn.close()
-    thread.exit()
+    #thread.exit()
 
 
 ## This is the main server this should be turned on first
