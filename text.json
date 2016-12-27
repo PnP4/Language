@@ -2,7 +2,7 @@
     "seq": [
         {
             "seqno": 1, 
-            "name": "view.py"
+            "name": "gen.py"
         }, 
         {
             "seqno": 2, 
@@ -18,14 +18,14 @@
         }
     ], 
     "msgtype": "link", 
-    "view.py": [
+    "you": "gen.py", 
+    "gen.py": [
         {
             "avialable": 0, 
-            "ip": "192.168.1.7", 
+            "ip": "127.0.0.1", 
             "conport": 8100, 
             "inport": 8090
         }
     ], 
-    "you": "view.py", 
     "prgid": "125899"
 }
